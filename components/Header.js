@@ -3,9 +3,8 @@ import Calculator from "./Calculator"
 export default function Header({ countries, rates }) {
   return (
     <>
-      (
       <div className="flex flex-col justify-center items-center">
-        <img src="/images/money.png" className="w-48" />
+        <img src="/images/money.png" className="w-48" alt="logo" />
         <p className="text-teal-500 font-bold text-center text-xl">
           Exchange Rate Calculator
         </p>
@@ -14,7 +13,6 @@ export default function Header({ countries, rates }) {
         </p>
         <Calculator countries={countries} rates={rates} />
       </div>
-      )
     </>
   )
 }
