@@ -1,27 +1,32 @@
+import { useState } from "react"
+
 export default function InputLayout({
   inputType,
   countries,
   handleDataChange,
+  handleCurrencyAmountChange,
   data,
 }) {
   const box1Id = `currencyType${inputType}`
   const box2Id = `amount${inputType}`
 
-  const handleChange = (event) => {
+  const handleCurrencyChange = (event) => {
     const target = event.target
     const value = target.value
     const name = target.name
     handleDataChange(name, value, inputType)
   }
 
+  const handleChangeConversion = (event) => {
+    // console.log(event.target.value)
+    handleCurrencyAmountChange(event.target.value)
+  }
+
   return (
     <>
       {!countries ? null : (
         <div className="flex flex-row justify-between">
-          <form
-            className="flex flex-row justify-between"
-            onChange={(e) => handleChange(e)}
-          >
+          <form className="flex flex-row justify-between">
             <div className=" px-3 mb-6 md:mb-0 mr-20 sm:mr-20 lg:mr-40">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-left text-xs font-bold mb-2"
@@ -34,6 +39,7 @@ export default function InputLayout({
                   name={box1Id}
                   className="block appearance-none  bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id={box1Id}
+                  onChange={(event) => handleCurrencyChange(event)}
                 >
                   {countries
                     ? countries.map((country, id) => (
@@ -66,8 +72,8 @@ export default function InputLayout({
                 name={box2Id}
                 type="text"
                 placeholder="90210"
-                value={data.amountInputBox}
-                onChange={() => console.log("g")}
+                value={data}
+                onChange={handleChangeConversion}
               />
             </div>
           </form>
