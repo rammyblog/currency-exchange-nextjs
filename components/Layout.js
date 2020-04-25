@@ -1,12 +1,11 @@
-import Head from "next/head"
+import App from "./MainApp"
+import MainApp from "./MainApp"
 
-import Data from "./Data"
-
-export default function Layout({ children, home, countries }) {
+export default function Layout({ children }) {
   return (
     <>
       <div className="flex justify-center items-center flex-col h-screen p-4">
-        <Data />
+        <MainApp />
         {children}
       </div>
     </>

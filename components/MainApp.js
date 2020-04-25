@@ -2,11 +2,15 @@ import { useEffect, useState } from "react"
 import Header from "./Header"
 import axios from "axios"
 import Loading from "./Loading"
+import Footer from "./Footer"
+import ErrorPage from "../pages/_error"
 
-function Data() {
+function MainApp() {
   const [countries, setCountries] = useState(null)
   const [rates, setRates] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+
   useEffect(() => {
     const gettingCountries = async () => {
       const endpoint = "latest"
@@ -20,7 +24,8 @@ function Data() {
         setRates(res.data.response.rates)
         setLoading(false)
       } catch (error) {
-        console.log(error)
+        setLoading(false)
+        setError(true)
       }
     }
     gettingCountries()
@@ -28,13 +33,17 @@ function Data() {
 
   return (
     <>
-      {!loading && countries ? (
-        <Header countries={countries} rates={rates} loading={loading} />
+      {!loading ? (
+        <>
+          <Header countries={countries} rates={rates} loading={loading} />
+        </>
       ) : (
         <Loading />
       )}
+
+      {error ? <ErrorPage /> : null}
     </>
   )
 }
 
-export default Data
+export default MainApp
