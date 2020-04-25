@@ -62,6 +62,7 @@ export default function Calculator({ countries, rates }) {
         if (key === data.currencyTypeInputBox) {
           from = value
         } else if (key === data.currencyTypeOutputBox) {
+          toCountry = key
           to = value
         }
       }
@@ -77,7 +78,12 @@ export default function Calculator({ countries, rates }) {
       }
     }
 
-    return input * (to / from)
+    const value =
+      data.currencyTypeOutputBox === data.currencyTypeInputBox
+        ? input
+        : input * (to / from)
+
+    return value
   }
 
   const handleInputOneAmountChange = (amount) => {
