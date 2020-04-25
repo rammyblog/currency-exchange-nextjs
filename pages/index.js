@@ -1,53 +1,37 @@
 import Head from "next/head"
 import Layout from "../components/Layout"
-import axios from "axios"
-import fetch from "node-fetch"
-export default function Home(props) {
-  const { countries } = props
+export default function Home() {
   return (
-    <Layout home countries={countries}>
+    <Layout home>
       <div className="container">
         <Head>
-          <title>Exchanger</title>
-          <link rel="icon" href="/favicon.ico" />
+          <meta charset="utf-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+          />
+          <meta name="description" content="Description" />
+          <meta name="keywords" content="Keywords" />
+          <title>Exchanger (Rate Calculator)</title>
+
+          <link rel="manifest" href="/manifest.json" />
+          <link
+            href="/favicon-16x16.png"
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+          />
+          <link
+            href="/favicon-32x32.png"
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+          />
+          <link rel="apple-touch-icon" href="/apple-icon.png"></link>
+          <meta name="theme-color" content="#38b2ac" />
         </Head>
       </div>
     </Layout>
   )
 }
-
-// This gets called on every request
-// export async function getServerSideProps() {
-//   const countries = []
-
-//   return { props: { countries } }
-// }
-
-// // set endpoint and your access key
-// endpoint = "convert"
-// api_key = "API_KEY"
-
-// // define from currency, to currency, and amount
-// from = "EUR"
-// to = "GBP"
-// amount = "10"
-
-// // execute the conversion using the "convert" endpoint:
-// $.ajax({
-//   url:
-//     "https://api.currencyscoop.com/" +
-//     endpoint +
-//     "?api_key=" +
-//     api_key +
-//     "&from=" +
-//     from +
-//     "&to=" +
-//     to +
-//     "&amount=" +
-//     amount,
-//   dataType: "jsonp",
-//   success: function (json) {
-//     // access the conversion result in json.result
-//     alert(json)
-//   },
-// })
