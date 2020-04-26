@@ -27,7 +27,7 @@ export default function InputLayout({
       {!countries ? null : (
         <div className="flex flex-row justify-between mb-8 -mx-2">
           <form className="flex flex-row justify-between -mx-2">
-            <div className="w-1/2 px-3 mb-6 md:mb-0 mr-20 sm:mr-20 lg:mr-40">
+            <div className="w-3/5 px-3 mb-6 md:mb-0 mr-20 sm:mr-20 lg:mr-40">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-left text-xs font-bold mb-2"
                 htmlFor={box1Id}
@@ -59,7 +59,7 @@ export default function InputLayout({
               </div>
             </div>
 
-            <div className="w-1/2 px-3 mb-6 md:mb-0">
+            <div className="w-2/5 px-3 mb-6 md:mb-0">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 htmlFor={box2Id}
