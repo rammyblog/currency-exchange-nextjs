@@ -26,7 +26,7 @@ export default function InputLayout({
     <>
       {!countries ? null : (
         <div className="flex flex-row justify-between mb-8">
-          <form className="flex flex-row justify-between">
+          <form className="flex flex-row justify-between -mx-2">
             <div className="w-1/2 px-3 mb-6 md:mb-0 mr-20 sm:mr-20 lg:mr-40">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-left text-xs font-bold mb-2"
