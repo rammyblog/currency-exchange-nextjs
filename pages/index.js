@@ -2,8 +2,8 @@ import Head from "next/head"
 import Layout from "../components/Layout"
 import axios from "axios"
 import ErrorPage from "./_error"
-import { useEffect } from "react"
-export default function Home({ countries, errorCode, rates, loading }) {
+import Loading from "../components/Loading"
+export default function Home({ countries, errorCode, rates }) {
   return (
     <>
       {errorCode ? (
@@ -46,7 +46,6 @@ export default function Home({ countries, errorCode, rates, loading }) {
 }
 
 export async function getServerSideProps() {
-  let loading = false
   const endpoint = "latest"
   const api_key = "2a7a202c431ecf4169c017ee138d8577"
   const base_url = "https://api.currencyscoop.com/v1/"
@@ -58,9 +57,7 @@ export async function getServerSideProps() {
   const rates = res.data.response.rates
   const errorCode = res.statusText === "OK" ? false : res.status
 
-  loading = true
-
   return {
-    props: { countries, rates, errorCode, loading },
+    props: { countries, rates, errorCode },
   }
 }

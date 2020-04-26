@@ -6,9 +6,6 @@ import Footer from "./Footer"
 import ErrorPage from "../pages/_error"
 
 function MainApp({ countries, rates }) {
-  useEffect(() => {
-    console.log("hello")
-  }, [])
   // const [countries, setCountries] = useState(null)
   // const [rates, setRates] = useState(null)
   // const [loading, setLoading] = useState(false)
