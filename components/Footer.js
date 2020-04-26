@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="fixed bottom-0 text-center mx-auto flex justify-center items-center">
+    <div className="absolute bottom-0 text-center mx-auto flex justify-center items-center">
       <div className="text-center">
         <span className="text-black">
           Coded with{" "}

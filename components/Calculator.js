@@ -62,7 +62,6 @@ export default function Calculator({ countries, rates }) {
         if (key === data.currencyTypeInputBox) {
           from = value
         } else if (key === data.currencyTypeOutputBox) {
-        
           to = value
         }
       }
@@ -104,7 +103,7 @@ export default function Calculator({ countries, rates }) {
       : currency.exchanged_amount
 
   return (
-    <div>
+    <div className="w-full">
       {countries ? (
         <>
           <InputLayout

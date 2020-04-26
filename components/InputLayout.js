@@ -25,9 +25,9 @@ export default function InputLayout({
   return (
     <>
       {!countries ? null : (
-        <div className="flex flex-row justify-between mb-8 -mx-2">
-          <form className="flex flex-row justify-between -mx-2">
-            <div className="px-3 mb-6 md:mb-0 mr-10 sm:mr-10 lg:mr-40">
+        <div className="w-full max-w-lg">
+          <form className="flex flex-row w-full max-w-lg justify-between -mx-2">
+            <div className=" w-1/2 px-3 mb-6 md:mb-0 mr-10">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-left text-xs font-bold mb-2"
                 htmlFor={box1Id}
@@ -37,13 +37,17 @@ export default function InputLayout({
               <div className="relative">
                 <select
                   name={box1Id}
-                  className="block appearance-none  bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="block appearance-none  
+                  bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 
+                  pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 w-full"
                   id={box1Id}
                   onChange={(event) => handleCurrencyChange(event)}
                 >
                   {countries
                     ? countries.map((country, id) => (
-                        <option value={country.currency_code} key={id}>{country.currency_name}</option>
+                        <option value={country.currency_code} key={id}>
+                          {country.currency_name}
+                        </option>
                       ))
                     : null}
                 </select>
@@ -59,7 +63,7 @@ export default function InputLayout({
               </div>
             </div>
 
-            <div className="px-3 mb-6 md:mb-0">
+            <div className="w-1/2 px-3 mb-6 md:mb-0">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 htmlFor={box2Id}

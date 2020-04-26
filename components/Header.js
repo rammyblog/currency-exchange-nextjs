@@ -6,7 +6,7 @@ export default function Header({ countries, rates }) {
     <>
       {!countries ? null : (
         <>
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center w-gull">
             <img src="/images/money.png" className="w-48" alt="logo" />
             <p className="text-teal-500 font-bold text-center text-xl">
               Exchange Rate Calculator
