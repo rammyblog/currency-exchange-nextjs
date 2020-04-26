@@ -43,7 +43,7 @@ export default function InputLayout({
                 >
                   {countries
                     ? countries.map((country, id) => (
-                        <option key={id}>{country}</option>
+                        <option key={id}>{country.currency_name}</option>
                       ))
                     : null}
                 </select>
