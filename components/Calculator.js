@@ -1,6 +1,5 @@
 import InputLayout from "./InputLayout"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useState } from "react"
 
 export default function Calculator({ countries, rates }) {
   const inputType = ["InputBox", "OutputBox"]
@@ -15,24 +14,6 @@ export default function Calculator({ countries, rates }) {
     exchanged_amount: "",
     inputType: "one",
   })
-
-  // useEffect(() => {
-  //   const gettingCountries = async () => {
-  //     const endpoint = "latest"
-  //     const api_key = "2a7a202c431ecf4169c017ee138d8577"
-  //     const base_url = "https://api.currencyscoop.com/v1/"
-
-  //     try {
-  //       const res = await axios.get(base_url + endpoint + "?api_key=" + api_key)
-  //       setCountries(Object.keys(res.data.response.rates))
-  //       setRates(res.data.response.rates)
-  //       handleSetLoading(false)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   gettingCountries()
-  // }, [])
 
   const handleDataChange = (name, value, inputType) => {
     setData({
