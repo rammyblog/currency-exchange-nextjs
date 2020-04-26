@@ -21,7 +21,7 @@ function MainApp() {
         setLoading(true)
         const res = await axios.get(base_url + endpoint + "?api_key=" + api_key)
         const countryRes = await axios.get(base_url + "currencies" + "?api_key=" + api_key)
-setCountries(CountryRes.data.response.fiats)
+setCountries(countryRes.data.response.fiats)
         setRates(res.data.response.rates)
         setLoading(false)
       } catch (error) {
