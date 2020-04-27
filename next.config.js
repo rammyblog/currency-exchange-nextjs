@@ -1,4 +1,3 @@
-import { API_KEY } from "./env"
 const isProd = process.env.NODE_ENV === "production"
 
 const withPWA = require("next-pwa")
