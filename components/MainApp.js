@@ -27,6 +27,8 @@ function MainApp() {
         setRates(res.data.response.rates)
         setLoading(false)
       } catch (error) {
+        console.log(error)
+
         setLoading(false)
         setError(true)
       }

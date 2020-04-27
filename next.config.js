@@ -9,8 +9,8 @@ module.exports = withPWA({
   },
 })
 
-// module.exports = {
-//   env: {
-//     API_KEY: API_KEY,
-//   },
-// }
+module.exports = {
+  env: {
+    API_KEY: process.env.API_KEY,
+  },
+}
