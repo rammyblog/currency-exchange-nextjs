@@ -1,19 +1,25 @@
 import InputLayout from "./InputLayout"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { numberWithCommas } from "./utils/numberFormatting"
+import Rates from "./Rates"
 
 export default function Calculator({ countries, rates }) {
   const inputType = ["InputBox", "OutputBox"]
   // const [countries, setCountries] = useState(null)
-  // const [rates, setRates] = useState(null)
+  const [conversionRate, setConversionRate] = useState(1)
 
   const [data, setData] = useState({
-    currencyTypeInputBox: "USD",
-    currencyTypeOutputBox: "USD",
+    currencyTypeInputBox: "AED",
+    currencyTypeOutputBox: "AED",
   })
   const [currency, setCurrency] = useState({
     exchanged_amount: "",
     inputType: "one",
   })
+
+  useEffect(() => {
+    toggleRates()
+  }, [data.currencyTypeOutputBox, data.currencyTypeInputBox, inputType])
 
   const handleDataChange = (name, value, inputType) => {
     setData({
@@ -24,14 +30,18 @@ export default function Calculator({ countries, rates }) {
   }
 
   function rateConversion(amount, type) {
-    const input = parseFloat(amount)
+    const input = parseFloat(amount.replace(/\,/g, ""))
+
     if (Number.isNaN(input)) {
       return ""
     }
-    const output = convert(input, type)
-    const rounded = Math.round(output * 1000) / 1000
+    const { value: output } = convert(input, type)
 
-    return rounded.toString()
+    const rounded = numberWithCommas(
+      Math.round(output * 1000) / 1000
+    ).toString()
+
+    return rounded
   }
 
   const convert = (input, type) => {
@@ -62,15 +72,32 @@ export default function Calculator({ countries, rates }) {
       data.currencyTypeOutputBox === data.currencyTypeInputBox
         ? input
         : input * (from / to)
-
-    return value
+    const conversionRate =
+      data.currencyTypeOutputBox === data.currencyTypeInputBox
+        ? 1
+        : Math.round((to / from) * 1000) / 1000
+    return { value, conversionRate }
   }
 
   const handleInputOneAmountChange = (amount) => {
-    setCurrency({ inputType: "one", exchanged_amount: amount })
+    setCurrency({
+      inputType: "one",
+      exchanged_amount: amount,
+    })
   }
   const handleInputTwoAmountChange = (amount) => {
-    setCurrency({ inputType: "two", exchanged_amount: amount })
+    setCurrency({
+      inputType: "two",
+      exchanged_amount: amount,
+    })
+  }
+
+  const toggleRates = () => {
+    const { conversionRate } = convert(
+      currency.exchanged_amount,
+      currency.inputType
+    )
+    setConversionRate(conversionRate)
   }
 
   const inputOne =
@@ -83,6 +110,8 @@ export default function Calculator({ countries, rates }) {
       ? rateConversion(currency.exchanged_amount, "one")
       : currency.exchanged_amount
 
+  console.log(currency.exchanged_amount)
+
   return (
     <div className="w-full">
       {countries ? (
@@ -93,6 +122,11 @@ export default function Calculator({ countries, rates }) {
             inputType={inputType[0]}
             data={inputTwo}
             handleCurrencyAmountChange={handleInputOneAmountChange}
+          />
+          <Rates
+            inputType={currency.inputType}
+            currencyType={data}
+            conversionRate={conversionRate}
           />
           <InputLayout
             handleDataChange={handleDataChange}

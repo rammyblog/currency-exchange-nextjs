@@ -1,3 +1,5 @@
+import { numberWithCommas } from "./utils/numberFormatting"
+
 export default function InputLayout({
   inputType,
   countries,
@@ -16,8 +18,12 @@ export default function InputLayout({
   }
 
   const handleChangeConversion = (event) => {
-    // console.log(event.target.value)
-    handleCurrencyAmountChange(event.target.value)
+    const regexp = /^[0-9]*\.?[0-9]*$/
+    const numberWithoutComma = event.target.value.replace(/\,/g, "")
+
+    if (event.target.value === "" || regexp.test(numberWithoutComma)) {
+      handleCurrencyAmountChange(numberWithCommas(numberWithoutComma))
+    }
   }
 
   return (
