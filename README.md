@@ -1,7 +1,5 @@
 # Currency Exchanger - Next.js
 
-An attempt to take a challenge on [Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt)
-
 ## Design preview for the Currency Exchanger App
 
 ![Design preview for the Job Listings coding challenge](./ExchangerRateCalculator.png)
